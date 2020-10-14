@@ -1,0 +1,9 @@
+unclassified:
+  sonarGlobalConfiguration:
+    buildWrapperEnabled: false
+    installations:
+      - name: "SonarQube"
+        serverUrl: "http://sonarqube:9000"
+        triggers:
+          skipScmCause: false
+          skipUpstreamCause: false

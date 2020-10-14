@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><flow-definition>
+    <actions/>
+    <description/>
+    <keepDependencies>false</keepDependencies>
+    <properties/>
+    <triggers/>
+    <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition">
+        <script>
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone sources') {
+            steps {
+                git url: 'https://github.com/tkgregory/sonarqube-jacoco-code-coverage.git'
+            }
+        }
+
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "./gradlew sonarqube"
+                }
+            }
+        }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
+    }
+}
+        </script>
+        <sandbox>true</sandbox>
+    </definition>
+</flow-definition>
