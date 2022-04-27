@@ -23,3 +23,6 @@ Once that's setup, try running the two pipeline jobs:
 
 1. A job that runs against a codebase with good code (expect to pass)
 1. A job that runs against a codebase with bad code (expect to fail)
+
+## Need further support?
+Contact me if you need help at tom@tomgregory.com.
